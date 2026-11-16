@@ -24,7 +24,7 @@ Desde la interfaz gráfica en **Processing** se visualiza tanto la simulación e
   * `TanqueUI.pde`: Librería propia con la declaración e implementación de la clase `CTanque` y las estructuras de nodos para la lista enlazada de alarmas (`NodoAlarma` y `ListaAlarmas`).
   * `historico_tanques.csv`: Archivo de persistencia generado en modo *append* con el historial de mediciones y aperturas de válvulas.
 * **`/Proyecto - Arduino`** *(En desarrollo - Cristian Quispe)*:
-  * Controlador de hardware en C++ para Arduino UNO + Shield Multifunción HW-262, lectura de los 4 sensores analógicos de nivel y accionamiento de válvulas.
+  * Controlador de hardware en C++ para Arduino UNO + Shield, lectura de los 4 sensores analógicos de nivel y accionamiento de válvulas.
 
 ---
 
