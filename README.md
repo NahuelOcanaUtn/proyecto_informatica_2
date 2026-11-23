@@ -1,4 +1,4 @@
-# Trabajo Final Integrador: Sistema SCADA de Monitoreo y Control de 4 Tanques (Tema 7)
+# Trabajo Final Integrador: Sistema de Monitoreo y Control de 4 Tanques (Tema 7)
 
 **Universidad:** Universidad Tecnológica Nacional - Facultad Regional Mendoza (UTN FRM)  
 **Cátedra:** Informática II  
