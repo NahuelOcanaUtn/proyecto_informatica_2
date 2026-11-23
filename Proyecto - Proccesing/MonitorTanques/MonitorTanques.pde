@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * PROGRAMA PRINCIPAL: MonitorTanques.pde
- * Monitoreo de 4 Tanques 
+ * Monitoreo de 3 Tanques
  * ============================================================================
  */
 
@@ -17,8 +17,8 @@ final int ESTADO_HISTORICO   = 1;
 int estadoActual = ESTADO_TIEMPO_REAL;
 
 // [CONTENEDORES EN MEMORIA - ARREGLO DE OBJETOS Y ARRAYLIST]
-final int CANT_TANQUES = 4;
-CTanque[] tanques = new CTanque[CANT_TANQUES]; // Arreglo de 4 objetos CTanque
+final int CANT_TANQUES = 3;
+CTanque[] tanques = new CTanque[CANT_TANQUES]; // Arreglo de 3 objetos CTanque
 ArrayList<String> historialArchivo = new ArrayList<String>(); // ArrayList dinámico (.add)
 ListaAlarmas listaEnlazadaAlarmas = new ListaAlarmas();       // Lista enlazada propia
 
@@ -40,12 +40,13 @@ void setup() {
   PFont fuenteNitida = createFont("Segoe UI", 16, true);
   textFont(fuenteNitida);
   
-  surface.setTitle("Proyecto Final Informática II - Tema 7: Sistema de 4 Tanques");
+  surface.setTitle("Proyecto Final Informática II - Tema 7: Sistema de 3 Tanques");
 
   // [POO - INSTANCIACION E INICIALIZACION DE OBJETOS]
-  float margenX = 65;
-  float separacion = 205;
-  float[] umbralesIniciales = {80.0, 75.0, 85.0, 70.0};
+  // Centrado en 920 px: 3 tanques de 140 px, separación 240 px -> márgenes izq/der de 150 px
+  float margenX = 150;
+  float separacion = 240;
+  float[] umbralesIniciales = {80.0, 75.0, 85.0};
   
   for (int i = 0; i < CANT_TANQUES; i++) {
     tanques[i] = new CTanque(i + 1, umbralesIniciales[i], margenX + i * separacion, 110, 140, 240);
@@ -64,7 +65,7 @@ void setup() {
       println("[!] Puerto ocupado. Ejecutando en MODO SIMULACION.");
     }
   } else {
-    println("[INFO] Sin Arduino detectado. MODO SIMULACION ACTIVO (Teclas 1..4 suben nivel, Q..R bajan nivel).");
+    println("[INFO] Sin Arduino detectado. MODO SIMULACION ACTIVO (Teclas 1..3 suben nivel, Q..E bajan nivel).");
   }
 
   // Cargar datos previos del archivo al iniciar
@@ -122,7 +123,7 @@ void ejecutarVistaHistorico() {
 
   fill(40);
   textSize(13);
-  text("FECHA Y HORA          | TANQUE 1 | TANQUE 2 | TANQUE 3 | TANQUE 4 | ESTADO VÁLVULAS", 70, 130);
+  text("FECHA Y HORA          | TANQUE 1 | TANQUE 2 | TANQUE 3 | ESTADO VÁLVULAS", 70, 130);
   line(65, 150, width - 65, 150);
 
   int fila = 0;
@@ -149,8 +150,11 @@ void guardarRegistroEnArchivoAppend() {
   }
 
   String estadoGeneral = hayValvulaAbierta ? "ALERTA_VALVULA_ABIERTA" : "NORMAL";
-  String lineaCSV = timestamp + " | T1: " + nf(tanques[0].getNivel(), 0, 1) + "% | T2: " + nf(tanques[1].getNivel(), 0, 1) + 
-                    "% | T3: " + nf(tanques[2].getNivel(), 0, 1) + "% | T4: " + nf(tanques[3].getNivel(), 0, 1) + "% | " + estadoGeneral;
+  String lineaCSV = timestamp;
+  for (int i = 0; i < CANT_TANQUES; i++) {
+    lineaCSV += " | T" + (i + 1) + ": " + nf(tanques[i].getNivel(), 0, 1) + "%";
+  }
+  lineaCSV += " | " + estadoGeneral;
 
   // 1. Guardar en disco en modo APPEND (true = agregar al final, false = pisar archivo)
   try {
@@ -190,8 +194,8 @@ void serialEvent(Serial p) {
     trama = trim(trama);
     String[] partes = split(trama, ',');
     
-    // Verifica carácter de inicio 'M' (Medición) y fin 'F'
-    if (partes.length == 6 && partes[0].equals("M") && partes[5].equals("F")) {
+    // Verifica carácter de inicio 'M' (Medición), 3 niveles y fin 'F' -> M,n1,n2,n3,F
+    if (partes.length == CANT_TANQUES + 2 && partes[0].equals("M") && partes[CANT_TANQUES + 1].equals("F")) {
       for (int i = 0; i < CANT_TANQUES; i++) {
         tanques[i].setNivel(float(partes[i + 1]));
       }
@@ -244,9 +248,6 @@ void keyPressed() {
   
   if (key == '3') tanques[2].setNivel(tanques[2].getNivel() + 8);
   if (key == 'e' || key == 'E') tanques[2].setNivel(tanques[2].getNivel() - 8);
-  
-  if (key == '4') tanques[3].setNivel(tanques[3].getNivel() + 8);
-  if (key == 'r' || key == 'R') tanques[3].setNivel(tanques[3].getNivel() - 8);
 }
 
 // ============================================================================
@@ -260,7 +261,7 @@ void dibujarEncabezadoYBotones() {
   fill(255);
   textAlign(LEFT, CENTER);
   textSize(20);
-  text("SISTEMA SCADA: MONITOREO DE 4 TANQUES Y VÁLVULAS", 25, 32);
+  text("SISTEMA DE MONITOREO DE 3 TANQUES Y VÁLVULAS", 25, 32);
 
   stroke(255);
   strokeWeight(1.5);
@@ -280,7 +281,7 @@ void dibujarPanelListaEnlazada() {
   fill(30);
   textAlign(LEFT, TOP);
   textSize(12);
-  text("ÚLTIMAS ALARMAS EN RAM (Lista Enlazada Dinámica):", 60, 483);
+  text("ÚLTIMAS ALARMAS:", 60, 483);
 
   NodoAlarma aux = listaEnlazadaAlarmas.getCabeza();
   int mostrados = 0;
@@ -296,7 +297,7 @@ void dibujarPanelListaEnlazada() {
 
   fill(100);
   textAlign(RIGHT, TOP);
-  text("Teclas Simulación: [1..4] Subir Nivel | [Q..R] Bajar Nivel", width - 60, 483);
+  text("Teclas Simulación: [1..3] Subir Nivel | [Q..E] Bajar Nivel", width - 60, 483);
 }
 
 // Devuelve la fecha y hora actual en formato dd/MM/yyyy 
