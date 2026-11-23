@@ -138,7 +138,7 @@ void ejecutarVistaHistorico() {
 // [MANEJO DE ARCHIVOS - MODO APPEND Y LECTURA]
 // ============================================================================
 void guardarRegistroEnArchivoAppend() {
-  String timestamp = nf(day(), 2) + "/" + nf(month(), 2) + " " + nf(hour(), 2) + ":" + nf(minute(), 2) + ":" + nf(second(), 2);
+  String timestamp = obtenerTimestamp();
   boolean hayValvulaAbierta = false;
 
   for (int i = 0; i < CANT_TANQUES; i++) {
@@ -297,4 +297,11 @@ void dibujarPanelListaEnlazada() {
   fill(100);
   textAlign(RIGHT, TOP);
   text("Teclas Simulación: [1..4] Subir Nivel | [Q..R] Bajar Nivel", width - 60, 483);
+}
+
+// Devuelve la fecha y hora actual en formato dd/MM/yyyy 
+String obtenerTimestamp() {
+  String fecha = nf(day(), 2) + "/" + nf(month(), 2) + "/" + nf(year(), 4);
+  String hora  = nf(hour(), 2) + ":" + nf(minute(), 2) + ":" + nf(second(), 2);
+  return fecha + " " + hora;
 }
