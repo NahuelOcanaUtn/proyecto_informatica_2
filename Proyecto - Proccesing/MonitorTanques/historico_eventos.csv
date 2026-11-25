@@ -1,27 +1,21 @@
-23/11/2026 20:20:34 | INICIO_SISTEMA | SCADA iniciado (MODO SIMULACION)
-23/11/2026 20:20:36 | CAMBIO_UMBRAL | Tanque 1 | 80% -> 85%
-23/11/2026 20:20:36 | CAMBIO_UMBRAL | Tanque 1 | 85% -> 90%
-23/11/2026 20:20:37 | CAMBIO_UMBRAL | Tanque 1 | 90% -> 95%
-23/11/2026 20:20:38 | CAMBIO_UMBRAL | Tanque 1 | 95% -> 90%
-23/11/2026 20:20:38 | CAMBIO_UMBRAL | Tanque 1 | 90% -> 85%
-23/11/2026 20:20:38 | CAMBIO_UMBRAL | Tanque 1 | 85% -> 80%
-23/11/2026 20:20:38 | CAMBIO_UMBRAL | Tanque 1 | 80% -> 75%
-23/11/2026 20:20:40 | CAMBIO_UMBRAL | Tanque 1 | 75% -> 70%
-23/11/2026 20:20:41 | CAMBIO_UMBRAL | Tanque 1 | 70% -> 65%
-23/11/2026 20:20:44 | CAMBIO_UMBRAL | Tanque 3 | 85% -> 80%
-23/11/2026 20:20:45 | CAMBIO_UMBRAL | Tanque 3 | 80% -> 75%
-23/11/2026 20:20:45 | CAMBIO_UMBRAL | Tanque 3 | 75% -> 70%
-23/11/2026 20:20:45 | CAMBIO_UMBRAL | Tanque 3 | 70% -> 65%
-23/11/2026 20:20:47 | APERTURA_VALVULA | Tanque 3 | Nivel: 72,0% (Umbral: 65%)
-23/11/2026 20:20:49 | CAMBIO_UMBRAL | Tanque 2 | 75% -> 70%
-23/11/2026 20:20:49 | CAMBIO_UMBRAL | Tanque 2 | 70% -> 65%
-23/11/2026 20:20:49 | CAMBIO_UMBRAL | Tanque 2 | 65% -> 60%
-23/11/2026 20:20:50 | APERTURA_VALVULA | Tanque 2 | Nivel: 64,0% (Umbral: 60%)
-23/11/2026 20:20:51 | CAMBIO_UMBRAL | Tanque 1 | 65% -> 70%
-23/11/2026 20:20:51 | CAMBIO_UMBRAL | Tanque 1 | 70% -> 75%
-23/11/2026 20:20:51 | CAMBIO_UMBRAL | Tanque 1 | 75% -> 80%
-23/11/2026 20:20:51 | CAMBIO_UMBRAL | Tanque 1 | 80% -> 75%
-23/11/2026 20:20:51 | CAMBIO_UMBRAL | Tanque 1 | 75% -> 70%
-23/11/2026 20:20:52 | CAMBIO_UMBRAL | Tanque 1 | 70% -> 65%
-23/11/2026 20:20:52 | CAMBIO_UMBRAL | Tanque 1 | 65% -> 60%
-23/11/2026 20:20:52 | CAMBIO_UMBRAL | Tanque 1 | 60% -> 55%
+23/11/2026 21:36:23 | INICIO_SISTEMA | SCADA iniciado (MODO SIMULACION)
+23/11/2026 21:36:26 | ALERTA_PREDICTIVA_NR | Tanque 1 alcanzara umbral en 4,7 s (v=9,52 %/s, 4 it.)
+23/11/2026 21:36:26 | ALERTA_PREDICTIVA_NR | Tanque 2 alcanzara umbral en 4,6 s (v=8,67 %/s, 4 it.)
+23/11/2026 21:36:26 | ALERTA_PREDICTIVA_NR | Tanque 3 alcanzara umbral en 4,3 s (v=12,21 %/s, 4 it.)
+23/11/2026 21:36:30 | CAMBIO_UMBRAL | Tanque 1 | 80% -> 75%
+23/11/2026 21:36:30 | CAMBIO_UMBRAL | Tanque 1 | 75% -> 70%
+23/11/2026 21:36:30 | CAMBIO_UMBRAL | Tanque 1 | 70% -> 65%
+23/11/2026 21:36:31 | CAMBIO_UMBRAL | Tanque 2 | 75% -> 70%
+23/11/2026 21:36:31 | CAMBIO_UMBRAL | Tanque 2 | 70% -> 65%
+23/11/2026 21:36:31 | CAMBIO_UMBRAL | Tanque 2 | 65% -> 60%
+23/11/2026 21:36:32 | CAMBIO_UMBRAL | Tanque 2 | 60% -> 65%
+23/11/2026 21:36:32 | CAMBIO_UMBRAL | Tanque 2 | 65% -> 70%
+23/11/2026 21:36:33 | ALERTA_PREDICTIVA_NR | Tanque 1 alcanzara umbral en 5,7 s (v=2,11 %/s, 6 it.)
+23/11/2026 21:42:23 | INICIO_SISTEMA | SCADA iniciado (MODO SIMULACION)
+23/11/2026 21:42:35 | INICIO_SISTEMA | SCADA iniciado (MODO SIMULACION)
+23/11/2026 21:42:56 | INICIO_SISTEMA | SCADA iniciado (MODO SIMULACION)
+23/11/2026 21:42:57 | ALERTA_PREDICTIVA_NR | Tanque 1 alcanzara umbral en 8,4 s (v=2,11 %/s, 6 it.)
+23/11/2026 21:43:00 | ALERTA_PREDICTIVA_NR | Tanque 1 alcanzara umbral en 8,7 s (v=4,50 %/s, 4 it.)
+23/11/2026 21:43:02 | ALERTA_PREDICTIVA_NR | Tanque 3 alcanzara umbral en 5,6 s (v=7,53 %/s, 4 it.)
+23/11/2026 21:43:03 | ALERTA_PREDICTIVA_NR | Tanque 2 alcanzara umbral en 9,0 s (v=3,77 %/s, 4 it.)
+23/11/2026 21:43:05 | ALERTA_PREDICTIVA_NR | Tanque 1 alcanzara umbral en 4,1 s (v=8,73 %/s, 4 it.)
